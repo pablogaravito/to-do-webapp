@@ -3,13 +3,12 @@ const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-addBtn.addEventListener('click', add);
+addBtn.addEventListener('click', addTask);
 
-function add() {
+function addTask() {
     const taskText = taskInput.value.trim();
-    if (taskText === "") {
-        return;
-    }
+    if (!taskText) return;
+
     const task = {text: taskText};
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -33,6 +32,11 @@ function editTask(index) {
     }
 }
 
+function checkTask(index) {
+    const li = taskList.index(index);
+    li.text = 'lol';
+}
+
 function displayTasks() {
     taskList.innerHTML = "";
 
@@ -41,8 +45,9 @@ function displayTasks() {
         li.innerHTML = `
             <span>${task.text}</span>
             <hr>
-            <button class="edit-button" onclick="editTask(${index})">Editar</button>
-            <button class="delete-button" onclick="deleteTask(${index})">Borrar</button>
+            <input type="image" class="img-button check-button" src="res/check.png" onclick="checkTask(${index})" />
+            <input type="image" class="img-button edit-button" src="res/edit.png" onclick="editTask(${index})" />
+            <input type="image" class="img-button delete-button" src="res/remove.png" onclick="deleteTask(${index})" /> 
         `;
         taskList.appendChild(li);
     });

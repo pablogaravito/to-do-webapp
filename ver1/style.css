@@ -74,7 +74,22 @@ li{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.delete-button{
+.img-button{
+    width: 32px;
+    height: 32px;
+    margin-left: 3px;
+}
+
+#add-btn{
+    width: 36px;
+    height: 36px;
+}
+
+li.checked{
+    text-decoration: line-through;
+}
+
+/* .delete-button{
     background-color: #ff5050;
     color: #fff;
     border: none;
@@ -83,10 +98,6 @@ li{
     font-size: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.delete-button:hover{
-    background-color: #ff0000;
 }
 
 .edit-button{
@@ -101,6 +112,10 @@ li{
     transition: background-color 0.3s ease;
 }
 
+.delete-button:hover{
+    background-color: #ff0000;
+}
+
 .edit-button:hover{
     background-color: #ff9800;
-}
+} */
