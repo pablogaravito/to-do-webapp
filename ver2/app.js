@@ -40,22 +40,31 @@ function addTask() {
 }
 
 function checkTask(index) {
-    let done = tasks[index].done;
+    let done = tasks[index].isDone;
+    // console.log('current status', done);
     tasks[index].done = !done;
+    done = tasks[index].isDone;
+    // console.log('new current status', done);
+    displayTasks();
 }
 
 const displayTasks = () => {
     taskList.innerHTML = "";
-
+    // console.log(tasks);
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
+        // console.log(task);
         li.innerHTML = `
-            <span onclick="checkTask(${index})>${task.text}</span>
+            <span onclick="checkTask(${index})">${task.text}</span>
             
             <span class="deleteSpan" onclick="deleteTask(${index})">\u00d7</span>
         `;
         if (task.isDone) {
-            
+            // console.log('done done');
+            li.classList.add('checked');
+        } else {
+            li.classList.remove('checked');
+            // console.log('not done man');
         }
         // li.innerHTML = task.text;
         // let span = document.createElement('span');
@@ -65,26 +74,19 @@ const displayTasks = () => {
     });
 }
 
-taskList.addEventListener('click', function(e){
-    console.log('jue');
-    if (e.target.tagName.toUpperCase() === 'LI') {
-        e.target.classList.toggle('checked');
-    }
-});
+// taskList.addEventListener('click', function(e){
+//     //console.log('jue');
+//     if (e.target.tagName.toUpperCase() === 'LI') {
+//         e.target.classList.toggle('checked');
+//     }
+// });
 
 function deleteTask(index) {
     tasks.splice(index, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    // localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTasks();
 }
 
-// const task = new Task('hello', false); 
 
-// console.log(task);
-
-// task.done = true;
-
-// console.log(task);
-
-// displayTasks();
+displayTasks();
 

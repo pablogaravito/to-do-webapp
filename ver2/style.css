@@ -98,7 +98,7 @@ ul li.checked::before{
     left: 8px; */
 }
 
-ul li span{
+ul li span.deleteSpan{
     position: absolute;
     right: 0;
     top: 3px;
@@ -111,6 +111,6 @@ ul li span{
     border-radius: 50%;
 }
     
-ul li span:hover{
+ul li span.deleteSpan:hover{
     background: #edeef0;
 }
