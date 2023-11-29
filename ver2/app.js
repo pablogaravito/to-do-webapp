@@ -13,17 +13,11 @@ class Task {
     }
 }
 
-const testTask = new Task('hello', false);
-console.log(testTask.isDone);
-testTask.done = true;
-console.log(testTask.isDone);
-
-
 const inputBox = document.querySelector('#input-box');
 const taskList = document.querySelector('#task-list');
 
 const addBtn = document.querySelector('#add-btn');
-const tasks = JSON.parse(localStorage.getItem('todo')) || [];
+const tasks = readTasks();
 
 addBtn.addEventListener('click', addTask);
 
@@ -33,7 +27,7 @@ function addTask() {
 
     const task = new Task(taskText, false);
     tasks.push(task);
-    localStorage.setItem('todo', JSON.stringify(tasks));
+    saveTasks();
     inputBox.value = '';
     displayTasks();
 }
@@ -41,15 +35,17 @@ function addTask() {
 function checkTask(index) {
     let done = tasks[index].isDone;
     tasks[index].done = !done;
-    done = tasks[index].isDone;
+    saveTasks();
     displayTasks();
 }
 
-const displayTasks = () => {
+function displayTasks() {
     taskList.innerHTML = "";
+    console.log(tasks);
     
     tasks.sort((a, b) => a.isDone - b.isDone);
     tasks.forEach((task, index) => {
+        console.log(task);
         const li = document.createElement('li');
         
         li.innerHTML = `
@@ -57,6 +53,7 @@ const displayTasks = () => {
             
             <span class="deleteSpan" onclick="deleteTask(${index})">\u00d7</span>
         `;
+        console.log(task.isDone);
         if (task.isDone) {
             li.classList.add('checked');
         } else {
@@ -67,11 +64,23 @@ const displayTasks = () => {
     });
 }
 
-
 function deleteTask(index) {
     tasks.splice(index, 1);
-    localStorage.setItem('todo', JSON.stringify(tasks));
+    saveTasks();
     displayTasks();
+}
+
+function readTasks() {
+    const savedTasks = JSON.parse(localStorage.getItem('todo')) || [];
+    const tasks = [];
+    savedTasks.forEach((task, index) => {
+        tasks.push(Object.assign(new Task(), task));
+    });
+    return tasks;
+}
+
+function saveTasks() {
+    localStorage.setItem('todo', JSON.stringify(tasks));
 }
 
 displayTasks();
