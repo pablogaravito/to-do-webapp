@@ -1,13 +1,17 @@
 window.addEventListener('load', () => {
-    todos = JSON.parse(localStorage.getItem('todos')) || [];
+    //todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todos = readTodos();
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
     
-    const username = localStorage.getItem('username') || '';
+    //const username = localStorage.getItem('username') || '';
+
+    const username = readUsername();
+
     nameInput.value = username;
 
     nameInput.addEventListener('change', e => {
-        localStorage.setItem('username', nameInput.value);
+        saveUsername(nameInput.value);
     });
 
     newTodoForm.addEventListener('submit', e => {
@@ -51,14 +55,12 @@ function displayTodos() {
 
         span.classList.add('bubble');
 
-        // span.classList.add(todo.category);
-        if (todo.category == 'personal') {
-            span.classList.add('personal');
-        } else {
-            span.classList.add('work');
-        }
-
-
+         span.classList.add(todo.category);
+        // if (todo.category == 'personal') {
+        //     span.classList.add('personal');
+        // } else {
+        //     span.classList.add('work');
+        // }
 
         content.classList.add('todo-content');
         actions.classList.add('actions');
@@ -94,6 +96,19 @@ function displayTodos() {
     });
 }
 
+function readUsername() {
+    return localStorage.getItem('username') || '';
+}
+
+function readTodos() {
+    return JSON.parse(localStorage.getItem('todos')) || [];
+}
+
+function saveUsername(value) {
+    localStorage.setItem('username', value);
+}
+
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
+
