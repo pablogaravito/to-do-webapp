@@ -1,10 +1,8 @@
 window.addEventListener('load', () => {
-    //todos = JSON.parse(localStorage.getItem('todos')) || [];
+
     todos = readTodos();
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
-    
-    //const username = localStorage.getItem('username') || '';
 
     const username = readUsername();
 
@@ -55,12 +53,7 @@ function displayTodos() {
 
         span.classList.add('bubble');
 
-         span.classList.add(todo.category);
-        // if (todo.category == 'personal') {
-        //     span.classList.add('personal');
-        // } else {
-        //     span.classList.add('work');
-        // }
+        span.classList.add(todo.category);
 
         content.classList.add('todo-content');
         actions.classList.add('actions');
@@ -91,6 +84,23 @@ function displayTodos() {
             saveTodos();
 
             todoItem.classList.toggle('done');
+            displayTodos();
+        });
+
+        editBtn.addEventListener('click', e => {
+            const input = content.querySelector('input');
+            input.removeAttribute('readonly');
+            input.focus();
+            input.addEventListener('blur', e => {
+                todo.content = e.target.value;
+                saveTodos();
+                displayTodos();
+            });         
+        });
+
+        deleteBtn.addEventListener('click', e => {
+            todos = todos.filter(t => t != todo);
+            saveTodos();
             displayTodos();
         });
     });
