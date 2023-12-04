@@ -35,8 +35,10 @@ body {
     background: var(--light);
     color: var(--dark);
     width: 100%;
+    padding: 1.5rem;
     max-width: 539px;
-    margin: 11px auto 11px;
+    min-height: 100vh;
+    margin: 0 auto;
     border-radius: 17px;
 }
 
@@ -55,7 +57,7 @@ h4 {
 }
 
 .greeting .title {
-    padding-top: 1.7rem;
+    /* padding-top: 1.7rem; */
     margin-top: 1rem;
     display: flex;
 }
@@ -151,14 +153,14 @@ input:checked ~ .bubble::after {
 
 .create-todo .options label div {
     color: var(--dark);
-    font-size: 1.125rem;
+    font-size: 1.1rem;
     margin-top: 0.8rem;
 }
 
 .create-todo input[type="submit"] {
     display: block;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0.8rem 1.5rem;
     color: #FFF;
     background-color: var(--primary);
@@ -198,7 +200,7 @@ input:checked ~ .bubble::after {
 
 .todo-item .todo-content input {
     color: var(--dark);
-    font-size: 1.125rem;
+    font-size: 1rem;
     width: 100%;
 }
 

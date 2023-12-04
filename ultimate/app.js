@@ -15,6 +15,9 @@ window.addEventListener('load', () => {
     newTodoForm.addEventListener('submit', e => {
         e.preventDefault();
 
+        if (!e.target.elements.content.value) return;
+        if (!e.target.elements.category.value) return;
+
         const todo = {
             content: e.target.elements.content.value,
             category: e.target.elements.category.value,
