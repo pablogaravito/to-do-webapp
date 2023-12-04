@@ -67,8 +67,8 @@ function displayTodos() {
         deleteBtn.classList.add('delete');
 
         content.innerHTML = `<input type="text" value="${todo.content}" readonly/>`;
-        editBtn.innerText = 'Editar';
-        deleteBtn.innerText = 'Borrar';
+        editBtn.innerHTML = '<img src="res/edit.svg" alt="editar">';
+        deleteBtn.innerHTML = '<img src="res/trash.svg" alt="borrar">';
 
         label.appendChild(input);
         label.appendChild(span);

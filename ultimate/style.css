@@ -6,6 +6,10 @@
     --grey: #888;
     --dark: #313154;
     --danger: #ff5b57;
+    --color1: #FD8A8A;
+    --color2: #F1F7B5;
+    --color3: #A8D1D1;
+    --color4: #9EA1D4;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
     --personal-glow: 0px 0px 4px rgba(235, 61, 162, 0.75);
@@ -36,10 +40,10 @@ body {
     color: var(--dark);
     width: 100%;
     padding: 1.5rem;
-    max-width: 539px;
-    min-height: 100vh;
-    margin: 0 auto;
-    border-radius: 17px;
+    max-width: 638px;
+    min-width: 600px;
+    margin: 53px auto;
+    border-radius: 10px; 
 }
 
 section {
@@ -57,7 +61,6 @@ h4 {
 }
 
 .greeting .title {
-    /* padding-top: 1.7rem; */
     margin-top: 1rem;
     display: flex;
 }
@@ -163,7 +166,7 @@ input:checked ~ .bubble::after {
     font-size: 1.1rem;
     padding: 0.8rem 1.5rem;
     color: #FFF;
-    background-color: var(--primary);
+    background-color: var(--color1);
     border-radius: 0.5rem;
     box-shadow: var(--personal-glow);
     cursor: pointer;
@@ -210,6 +213,8 @@ input:checked ~ .bubble::after {
 }
 
 .todo-item .actions button {
+    height: 44px;
+    width: 44px;
     display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -220,15 +225,16 @@ input:checked ~ .bubble::after {
 
 .todo-item .actions button:hover {
     opacity: 0.8;
+    
 }
 
 .todo-item .actions .edit {
     margin-right: 0.5rem;
-    background-color: var(--primary);
+    background-color: var(--color3);
 }
 
 .todo-item .actions .delete {
-    background-color: var(--danger);
+    background-color: var(--color4);
 }
 
 .todo-item.done .todo-content input {
