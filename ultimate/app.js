@@ -17,10 +17,11 @@ window.addEventListener('load', () => {
 
         if (!e.target.elements.content.value) return;
         if (!e.target.elements.category.value) return;
+        let categoryValue = e.target.elements.category.value;
 
         const todo = {
             content: e.target.elements.content.value,
-            category: e.target.elements.category.value,
+            category: categoryValue,
             done: false,
             createdAt: new Date().getTime()
         }
@@ -29,6 +30,11 @@ window.addEventListener('load', () => {
         sortTodos();
         saveTodos();
         e.target.reset();
+        if (categoryValue == 'work') {
+            document.querySelector('#categoryWork').checked = true;
+        } else {
+            document.querySelector('#categoryPersonal').checked = true;
+        }
         displayTodos();
     });
     displayTodos();
@@ -72,11 +78,11 @@ function displayTodos() {
 
         label.appendChild(input);
         label.appendChild(span);
-        //label.appendChild(content);
+        label.appendChild(content);
         actions.appendChild(editBtn);
         actions.appendChild(deleteBtn);
         todoItem.appendChild(label);
-        todoItem.appendChild(content);
+        //todoItem.appendChild(content);
         todoItem.appendChild(actions);
 
         todosList.appendChild(todoItem);
@@ -85,7 +91,7 @@ function displayTodos() {
             todoItem.classList.add('done');
         }
 
-        input.addEventListener('click', e => {
+        content.addEventListener('click', e => {
             todo.done = e.target.checked;
             sortTodos();
             saveTodos();
