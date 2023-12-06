@@ -17,8 +17,7 @@
 
 * {
     margin: 0;
-    padding: 0;
-    
+    padding: 0; 
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
@@ -36,7 +35,7 @@ body {
     background-color: #191a1a;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .app {
@@ -271,7 +270,33 @@ h4 {
     pointer-events: none;
     opacity: 0;
   }
-  
+
+  .todo-container .todo-item {
+    position: relative;
+  }
+
+  .todo-container .todo-item > i {
+    color: #fff;
+    background-color: var(--personal);
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    /* margin-left: 10px; */
+    
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 8px;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .todo-container .todo-item.done > i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+
   .radio-span.work > i {
     background-color: var(--business);
   }
@@ -289,17 +314,18 @@ h4 {
   }
   
   .radio-span .radio-text i {
-    color: var(--grey);
+    color: var(--dark);
     line-height: 62px;
     font-size: 44px;
     margin-right: 5px;
   }
+
   .radio-span .radio-text.work i {
     margin-right: 8px;
   }
   
   .radio-span .radio-text h3 {
-    color: var(--grey);
+    color: var(--dark);
     user-select: none;
     font-family: "Raleway", sans-serif;
     font-size: 22px;
@@ -325,44 +351,88 @@ input[type="checkbox"] {
     display: none;
 }
 
-.bubble {
+.todo-container {
+    display: flex;
+}
+
+.custom-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.custom-check i {
+    color: #fff;
+    background-color: var(--business);
+    font-size: 28px;
+    
+    width: 35px;
+    height: 35px;
+
+    position: absolute;
+    
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 5px;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.custom-check.personal i {
+    background-color: var(--personal);
+}
+
+.custom-check.custom-checked i {
+    opacity: 1;
+    transform: translateX(-10%) scale(1);
+
+}
+
+.todo-container .todo-item {
+    flex: 1 1 0%;
+}
+
+.custom-check {
+    display: flex;
+    position: relative;    
+}
+
+.custom-check .bubble {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 15px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: 2px solid var(--business);
+    margin-right: 5px;
     box-shadow: var(--business-glow);
 }
 
-.bubble.personal {
+.custom-check.personal .bubble {
     border-color: var(--personal);
     box-shadow: var(--personal-glow);
 }
 
-.bubble::after {
+/* .custom-check .bubble::after {
     content: "";
     display: block;
     opacity: 0;
-    width: 0px;
-    height: 0px;
+    width: 35px;
+    height: 35px;
     background-color: var(--business);
     box-shadow: var(--business-glow);
     border-radius: 50%;
     transition: 0.2s ease-in-out;
 }
 
-.bubble.personal::after {
+.custom-check .bubble.personal::after {
     background-color: var(--personal);
     box-shadow: var(--personal-glow);
-}
+} */
 
-input:checked ~ .bubble::after {
-    width: 10px;
-    height: 10px;
-    opacity: 1;
-}
 
 
 .todo-list .list {
@@ -379,11 +449,11 @@ input:checked ~ .bubble::after {
     margin-bottom: 0.5rem;
 }
 
-.todo-item label {
+/* .todo-item label {
     display: block;
     margin-right: 1rem;
     cursor: pointer;
-}
+} */
 
 .todo-item .todo-content {
     flex: 1 1 0%;
@@ -395,14 +465,15 @@ input:checked ~ .bubble::after {
     width: 100%;
 }
 
-.todo-item .actions {
+.actions {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.todo-item .actions button {
-    height: 44px;
-    width: 44px;
+.actions button {
+    height: 38;
+    width: 38;
     display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -415,12 +486,14 @@ input:checked ~ .bubble::after {
     opacity: 0.8;
 }
 
-.todo-item .actions .edit {
-    margin-right: 0.5rem;
+.actions button {
+    margin-left: 0.2rem;
+}
+.actions .edit {
     background-color: var(--color3);
 }
 
-.todo-item .actions .delete {
+.actions .delete {
     background-color: var(--color4);
 }
 
