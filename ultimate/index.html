@@ -25,12 +25,15 @@
       </section>
       <section class="create-todo">
         <form id="new-todo-form">
-          <input
-            type="text"
-            name="content"
-            id="content"
-            placeholder="Agrega una tarea"
-          />
+          <div class="row">
+            <input
+              type="text"
+              name="content"
+              id="content"
+              placeholder="Agrega una tarea"
+            />
+            <input type="submit" value="Añadir" />
+          </div>
 
           <!-- <div class="options">
 
@@ -57,7 +60,7 @@
           </div> -->
           <div class="radio-buttons">
             <label class="custom-radio">
-              <input type="radio" name="radio" />
+              <input type="radio" name="category" value="personal" />
               <span class="radio-span"
                 ><i class="las la-check"></i>
                 <div class="radio-text">
@@ -67,7 +70,7 @@
               </span>
             </label>
             <label class="custom-radio">
-              <input type="radio" name="radio" />
+              <input type="radio" name="category" value="work" />
               <span class="radio-span work"
                 ><i class="las la-check"></i>
                 <div class="radio-text">
@@ -77,7 +80,6 @@
               </span>
             </label>
           </div>
-          <input type="submit" value="Agregar tarea" />
         </form>
       </section>
 

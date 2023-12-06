@@ -92,8 +92,18 @@ h4 {
     font-weight: 700;
 }
 
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 1.2rem;
+}
+
 .create-todo input[type="text"] {
-    display: block;
+    /* display: block;
     width: 100%;
     font-size: 1rem;
     padding: 0.8rem 1.5rem;
@@ -101,8 +111,44 @@ h4 {
     background-color: #FFF;
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; */
+    flex: 1;
+    border: none;
+    outline: none;
+    /* background: transparent; */
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
 }
+
+.create-todo input[type="submit"] {
+    /* display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.2rem;
+    color: #FFF;
+    background-color: var(--color1);
+    border-radius: 0.5rem;
+    box-shadow: var(--personal-glow);
+    cursor: pointer;
+    transition: 0.2s ease-in-out; */
+    border: none;
+    outline: none;
+    
+    color: #fff;
+    background: #ff5945;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.7rem;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+.create-todo input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
 .icon {
     display: flex;
     flex-direction: row;
@@ -317,22 +363,7 @@ input:checked ~ .bubble::after {
     height: 10px;
     opacity: 1;
 }
-.create-todo input[type="submit"] {
-    display: block;
-    width: 100%;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.2rem;
-    color: #FFF;
-    background-color: var(--color1);
-    border-radius: 0.5rem;
-    box-shadow: var(--personal-glow);
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
 
-.create-todo input[type="submit"]:hover {
-    opacity: 0.8;
-}
 
 .todo-list .list {
     margin: 0.5rem 0;
