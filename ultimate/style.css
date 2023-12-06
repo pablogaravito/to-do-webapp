@@ -32,19 +32,33 @@ input:not([type='radio']):not([type='checkbox']), button {
 }
 
 body {
+    display: flex;
     background-color: #191a1a;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .app {
+    position: relative;
+    width: 638px;
+    height: 602px;
     background: var(--light);
     color: var(--dark);
-    width: 100%;
+    border-radius: 10px; 
+    
+    /* width: 100%;
     padding: 1.5rem;
     max-width: 638px;
     min-width: 600px;
-    margin: 53px auto;
-    border-radius: 10px; 
+    margin: 53px auto; */
 }
+/* 
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
 
 section {
     margin-top: 1rem;
@@ -87,17 +101,70 @@ h4 {
     background-color: #FFF;
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
+}
+.icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.create-todo .options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    margin-bottom: 1.2rem;
+
+/* .radio-btn {
+    margin: 10px;
+    width: 180px;
+    height: 50px;
+    border: 3px solid transparent;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
 }
 
-.create-todo .options label {
+.radio-btn > i {
+    color: #fff;
+    background-color: #8373e6;
+    font-size: 20px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 3px;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.radio-btn .icon {
+    width: 53px;
+    height: 53px;
+}
+
+.radio-btn .icon i {
+    color: #8373e6;
+    font-size: 53px;
+}
+
+.radio-btn .icon h3 {
+    color: #8373e6;
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.custom-radio input:checked + .radio-btn {
+    border: 3px solid #8373e6;
+}
+
+.custom-radio input:checked + .radio-btn > i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+} */
+
+/* .create-todo .options label {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +174,105 @@ h4 {
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
     cursor: pointer;
-}
+} */
+
+.radio-buttons {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    text-align: center;
+    user-select: none;
+    /* display: flex;
+    justify-content: space-around; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .custom-radio input {
+    display: none;
+  }
+  
+  .radio-span {
+    /* margin: 10px; */
+    width: 100%;
+    height: 62px;
+    border: 3px solid transparent;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
+  }
+  
+  .radio-buttons h3 {
+    display: inline-block;
+  }
+  
+  .radio-span > i {
+    color: #fff;
+    background-color: var(--personal);
+    font-size: 20px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 3px;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .radio-span.work > i {
+    background-color: var(--business);
+  }
+  
+  .radio-span .radio-text {
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .radio-span .radio-text i {
+    color: var(--grey);
+    line-height: 62px;
+    font-size: 44px;
+    margin-right: 5px;
+  }
+  .radio-span .radio-text.work i {
+    margin-right: 8px;
+  }
+  
+  .radio-span .radio-text h3 {
+    color: var(--grey);
+    user-select: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    /* text-transform: uppercase; */
+  }
+  
+  .custom-radio input:checked + .radio-span {
+    border: 3px solid var(--personal);
+  }
+  
+  .custom-radio input:checked + .radio-span.work {
+    border: 3px solid var(--business);
+  }
+  
+  .custom-radio input:checked + .radio-span > i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -140,7 +305,6 @@ input[type="checkbox"] {
     box-shadow: var(--business-glow);
     border-radius: 50%;
     transition: 0.2s ease-in-out;
-    
 }
 
 .bubble.personal::after {
@@ -153,18 +317,11 @@ input:checked ~ .bubble::after {
     height: 10px;
     opacity: 1;
 }
-
-.create-todo .options label div {
-    color: var(--dark);
-    font-size: 1.1rem;
-    margin-top: 0.8rem;
-}
-
 .create-todo input[type="submit"] {
     display: block;
     width: 100%;
     font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 1.2rem;
     color: #FFF;
     background-color: var(--color1);
     border-radius: 0.5rem;
@@ -225,7 +382,6 @@ input:checked ~ .bubble::after {
 
 .todo-item .actions button:hover {
     opacity: 0.8;
-    
 }
 
 .todo-item .actions .edit {

@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@500&family=Raleway:wght@800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>To-Do by Pablis (Ultimate Version)</title>
   </head>
@@ -29,27 +32,49 @@
             placeholder="Agrega una tarea"
           />
 
-          <div class="options">
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="workCategory"
-                value="work"
-              />
-              <span class="bubble work"></span>
-              <div>Trabajo</div>
-            </label>
+          <!-- <div class="options">
 
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="personalCategory"
-                value="personal"
-              />
-              <span class="bubble personal"></span>
-              <div>Personal</div>
+            <label class="custom-radio">
+              <input type="radio" name="radio" />
+              <span class="radio-btn"
+                ><i class="las la-check"></i>
+                <div class="icon">
+                  <i class="las la-user"></i>
+                  <h3>Personal</h3>
+                </div>
+              </span>
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="radio" />
+              <span class="radio-btn"
+                ><i class="las la-check"></i>
+                <div class="icon">
+                  <i class="las la-suitcase"></i>
+                  <h3>Trabajo</h3>
+                </div>
+              </span>
+            </label>
+          </div> -->
+          <div class="radio-buttons">
+            <label class="custom-radio">
+              <input type="radio" name="radio" />
+              <span class="radio-span"
+                ><i class="las la-check"></i>
+                <div class="radio-text">
+                  <i class="las la-user"></i>
+                  <h3>Personal</h3>
+                </div>
+              </span>
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="radio" />
+              <span class="radio-span work"
+                ><i class="las la-check"></i>
+                <div class="radio-text">
+                  <i class="las la-suitcase"></i>
+                  <h3>Trabajo</h3>
+                </div>
+              </span>
             </label>
           </div>
           <input type="submit" value="Agregar tarea" />
