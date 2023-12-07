@@ -1,10 +1,8 @@
 window.addEventListener('load', () => {
-
     todos = readTodos();
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
     
-
     const username = readUsername();
 
     nameInput.value = username;
@@ -15,9 +13,6 @@ window.addEventListener('load', () => {
 
     newTodoForm.addEventListener('submit', e => {
         e.preventDefault();
-
-        // if (!e.target.elements.content.value) return;
-        // if (!e.target.elements.category.value) return;
 
         if ((!e.target.elements.content.value) || (!e.target.elements.category.value)) {
             showAlert();
@@ -50,9 +45,7 @@ window.addEventListener('load', () => {
 function displayTodos() {
     const todosList = document.querySelector('#todos-list');
 
-    todosList.innerHTML = '';
-
-   
+    todosList.innerHTML = ''; 
 
     todos.forEach(todo => {
         const todoContainer = document.createElement('div');
@@ -66,36 +59,27 @@ function displayTodos() {
         const checkI = document.createElement('i');
         checkI.classList.add('las');
         checkI.classList.add('la-check');
-        //checkI.innerHTML = '<i class="las la-check"></i>';
         const actions = document.createElement('div');
         actions.classList.add('actions');
         const editBtn = document.createElement('button');
         const deleteBtn = document.createElement('button');
         const span = document.createElement('span');
         span.classList.add('bubble');
-        // span.classList.add(todo.category);
         todoCustomCheck.classList.add(todo.category);
 
         todoCustomCheck.appendChild(span);
         todoCustomCheck.appendChild(checkI);
-
-
-        // const input = document.createElement('input');
-        // input.type = 'checkbox';
-        // input.checked = todo.done;
         
         content.innerHTML = `<input class="noselect" type="text" value="${todo.content}" readonly/>`;
         editBtn.innerHTML = '<img src="res/edit.svg" alt="editar">';
         deleteBtn.innerHTML = '<img src="res/trash.svg" alt="borrar">';
         editBtn.classList.add('edit');
+        editBtn.classList.add('main-button');
         deleteBtn.classList.add('delete');
+        deleteBtn.classList.add('main-button');
         actions.appendChild(editBtn);
         actions.appendChild(deleteBtn);
-        // todoItem.appendChild(checkI);
-        // todoItem.appendChild(span);
         todoItem.appendChild(content);
-        //todoItem.appendChild(content);
-        // todoItem.appendChild(actions);
         todoContainer.appendChild(todoCustomCheck);
         todoContainer.appendChild(todoItem);
         todoContainer.appendChild(actions);
@@ -107,7 +91,7 @@ function displayTodos() {
 
         todosList.appendChild(todoContainer);
 
-            todoCustomCheck.addEventListener('click', function() {
+        todoCustomCheck.addEventListener('click', function() {
             todo.done = !todo.done;
             sortTodos();
             saveTodos();            
@@ -119,16 +103,27 @@ function displayTodos() {
             input.removeAttribute('readonly');
             input.classList.remove('noselect');
             input.focus();
+
             input.addEventListener('blur', e => {
                 input.classList.add('noselect');
                 todo.content = e.target.value;
                 sortTodos();
                 saveTodos();
                 displayTodos();
-            });         
+            });       
+            
+            input.addEventListener('keyup', e => {
+                if (e.key === "Enter") {
+                    input.classList.add('noselect');
+                    todo.content = e.target.value;
+                    sortTodos();
+                    saveTodos();
+                    displayTodos();
+                }
+            });
         });
 
-        deleteBtn.addEventListener('click', e => {
+        deleteBtn.addEventListener('click', () => {
             todos = todos.filter(t => t != todo);
             saveTodos();
             displayTodos();

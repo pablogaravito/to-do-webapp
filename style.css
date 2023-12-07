@@ -1,26 +1,14 @@
-:root {
-    /* --primary: #EA40A4;
-    --business: #3A82EE; */
-    --primary: #E8A0BF;
-    --business: #3A82EE;
+:root {   
     --business: #B2A4FF;
-    --primary: #FF8080;
-    --personal: var(--primary);
-    --light: #EEE;
+    --personal: #FF8080;
     --grey: #888;
     --dark: #313154;
-    --danger: #ff5b57;
     --color1: #FD8A8A;
     --color2: #F1F7B5;
-    --color3: #A8D1D1;
-    --color4: #9EA1D4;
-
-    
-    --color5: #F6FDC3;
-    --color6: #CDFAD5;
-    --color7: #F8EAD8;
-    --color8: #FF8080;
-    --color9: rgb(237, 218, 193);
+    --color3: #CDFAD5;
+    --color4: #F8EAD8;
+    --color5: #FF8080;
+    --color6: rgb(237, 218, 193);
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     --business-glow: 0px 0px 4px rgba(177, 163, 255, 0.75);
     --personal-glow: 0px 0px 4px rgba(232, 161, 192, 0.75);
@@ -53,7 +41,7 @@ body {
     position: relative;
     width: 638px;
     height: 602px;
-    background: var(--color9);
+    background: var(--color6);
     color: var(--dark);
     border-radius: 10px; 
 }
@@ -122,14 +110,7 @@ h4 {
     border-radius: 40px;
 }
 
-.create-todo input[type="submit"]:hover {
-    background: var(--color8);
-}
 
-.create-todo input[type="submit"]:active {
-    transform: scale(0.95);
-
-}
 
 .icon {
     display: flex;
@@ -156,8 +137,8 @@ h4 {
   .radio-span {
     width: 100%;
     height: 62px;
-    background: var(--color7);
-    border: 1px solid var(--color7);
+    background: var(--color4);
+    border: 1px solid var(--color4);
     display: inline-block;
     border-radius: 10px;
     position: relative;
@@ -321,7 +302,7 @@ h4 {
     height: 350px;
     overflow-y: auto;
     padding-right: 8px;
-    background: var(--color7);
+    background: var(--color4);
     border-radius: 15px;
     box-shadow: var(--shadow);
 }
@@ -376,9 +357,21 @@ h4 {
     justify-content: center;
 }
 
+.main-button {
+    filter: brightness(1);
+}
+
+.main-button:hover {
+    filter: brightness(0.95);
+}
+
+.main-button:active {
+    transform: scale(0.95);
+}
+
 .actions button {
-    height: 38;
-    width: 38;
+    height: 38px;
+    width: 38px;
     display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -387,19 +380,17 @@ h4 {
     transition: 0.2s ease-in-out;
 }
 
-.todo-item .actions button:hover {
-    opacity: 0.8;
-}
-
 .actions button {
     margin-left: 0.2rem;
 }
 .actions .edit {
     background-color: var(--color2);
+    border-radius: 8px;
 }
 
 .actions .delete {
-    background-color: var(--color6);
+    background-color: var(--color3);
+    border-radius: 8px;
 }
 
 .todo-item.done .todo-content input {
@@ -424,6 +415,9 @@ h4 {
 }
 
 .hidden.alert-container {
-    /* display: none; */
     right: -500px;
+}
+
+.create-todo input[type="submit"]:hover {
+    background: var(--color5);
 }
