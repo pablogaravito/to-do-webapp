@@ -77,7 +77,7 @@ function displayTodos() {
         // input.type = 'checkbox';
         // input.checked = todo.done;
         
-        content.innerHTML = `<input type="text" value="${todo.content}" readonly/>`;
+        content.innerHTML = `<input class="noselect" type="text" value="${todo.content}" readonly/>`;
         editBtn.innerHTML = '<img src="res/edit.svg" alt="editar">';
         deleteBtn.innerHTML = '<img src="res/trash.svg" alt="borrar">';
         editBtn.classList.add('edit');
@@ -102,8 +102,6 @@ function displayTodos() {
 
             todoCustomCheck.addEventListener('click', function() {
             todo.done = !todo.done;
-            //console.log(todo.done);
-            //todoItem.classList.toggle('done');
             sortTodos();
             saveTodos();            
             displayTodos();
@@ -173,8 +171,10 @@ function displayTodos() {
         editBtn.addEventListener('click', () => {
             const input = content.querySelector('input');
             input.removeAttribute('readonly');
+            input.classList.remove('noselect');
             input.focus();
             input.addEventListener('blur', e => {
+                input.classList.add('noselect');
                 todo.content = e.target.value;
                 sortTodos();
                 saveTodos();
@@ -207,7 +207,7 @@ function saveTodos() {
 }
 
 function sortTodos() {
-    todos.sort((a,b) => b.createdAt - a.createdAt);
+    // todos.sort((a,b) => b.createdAt - a.createdAt);
     todos.sort((a, b) => a.done - b.done);
 }
 
