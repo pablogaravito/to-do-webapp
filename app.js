@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     todos = readTodos();
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
+    
 
     const username = readUsername();
 
@@ -15,8 +16,14 @@ window.addEventListener('load', () => {
     newTodoForm.addEventListener('submit', e => {
         e.preventDefault();
 
-        if (!e.target.elements.content.value) return;
-        if (!e.target.elements.category.value) return;
+        // if (!e.target.elements.content.value) return;
+        // if (!e.target.elements.category.value) return;
+
+        if ((!e.target.elements.content.value) || (!e.target.elements.category.value)) {
+            showAlert();
+            return;
+        }
+        
         let categoryValue = e.target.elements.category.value;
 
         const todo = {
@@ -150,3 +157,13 @@ function sortTodos() {
     todos.sort((a, b) => a.done - b.done);
 }
 
+function showAlert() {
+    const alertContainer = document.querySelector('.alert-container');
+    alertContainer.classList.remove('hidden');
+    setTimeout(hideAlert, 1500);
+}
+
+function hideAlert() {
+    const alertContainer = document.querySelector('.alert-container');
+    alertContainer.classList.add('hidden');
+}

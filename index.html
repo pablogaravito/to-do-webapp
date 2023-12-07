@@ -20,7 +20,13 @@
     <main class="app">
       <section class="greeting">
         <h2 class="title">
-          Hola, <input type="text" id="name" placeholder="Tu nombre" />
+          Hola,
+          <input
+            type="text"
+            id="name"
+            placeholder="Tu nombre"
+            autocomplete="off"
+          />
         </h2>
       </section>
       <section class="create-todo">
@@ -31,6 +37,7 @@
               name="content"
               id="content"
               placeholder="Agrega una tarea"
+              autocomplete="off"
             />
             <input type="submit" value="Añadir" />
           </div>
@@ -72,6 +79,9 @@
       <section class="todo-list">
         <div class="list" id="todos-list"></div>
       </section>
+      <div class="alert-container hidden">
+        Debes escribir una tarea y escoger una categoría!
+      </div>
     </main>
     <script src="app.js"></script>
   </body>
