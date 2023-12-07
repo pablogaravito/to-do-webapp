@@ -107,67 +107,6 @@ function displayTodos() {
             displayTodos();
         });
 
-        /* const todoItem = document.createElement('div');
-        t
-
-        const label = document.createElement('label');
-        
-        
-        const content = document.createElement('div');
-        const actions = document.createElement('div');
-        const editBtn = document.createElement('button');
-        const deleteBtn = document.createElement('button');
-        
-        
-
-        content.classList.add('todo-content');
-        
-
-        editBtn.classList.add('edit');
-        deleteBtn.classList.add('delete');
-
-        content.innerHTML = `<input type="text" value="${todo.content}" readonly/>`;
-        editBtn.innerHTML = '<img src="res/edit.svg" alt="editar">';
-        deleteBtn.innerHTML = '<img src="res/trash.svg" alt="borrar">';
-
-        label.appendChild(input);
-        label.appendChild(span);
-        label.appendChild(content);
-        actions.appendChild(editBtn);
-        actions.appendChild(deleteBtn);
-        todoItem.appendChild(label);
-        //todoItem.appendChild(content);
-        todoItem.appendChild(actions);
-
-        todosList.appendChild(todoItem);
-
-        if (todo.done) {
-            todoItem.classList.add('done');
-        }
-*/
-        // .addEventListener('click', function() {
-        //     todo.done = !todo.done;
-        //     todoItem.classList.toggle('done');
-        //     sortTodos();
-        //     saveTodos();
-
-            
-        //     displayTodos();
-        // });
-
-        // todoItem.querySelector('.edit').addEventListener('click', function() {
-        //     console.log('edit clicked...');
-        //     const input = content.querySelector('input');
-        //     input.removeAttribute('readonly');
-        //     input.focus();
-        //     input.addEventListener('blur', e => {
-        //         todo.content = e.target.value;
-        //         sortTodos();
-        //         saveTodos();
-        //         displayTodos();
-        //     });         
-        // });
-
         editBtn.addEventListener('click', () => {
             const input = content.querySelector('input');
             input.removeAttribute('readonly');
