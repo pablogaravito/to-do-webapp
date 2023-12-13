@@ -21,6 +21,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 15px;
+}
+
 input:not([type='radio']):not([type='checkbox']), button {
     appearance: none;
     border: none;
@@ -34,12 +38,14 @@ body {
     background-color: #191a1a;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .app {
     position: relative;
-    width: 638px;
+    width: 80%;
+    max-width: 639px;
+    min-width: 480px;
     height: 602px;
     background: var(--color6);
     color: var(--dark);
@@ -86,6 +92,7 @@ h4 {
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 1.2rem;
+    width: 100%;
 }
 
 .create-todo input[type="text"] {
@@ -195,9 +202,16 @@ h4 {
   
   .radio-span .radio-text i {
     color: var(--dark);
-    line-height: 62px;
-    font-size: 44px;
+    
+    /* line-height: 2rem; */
+    /* font-size: 2.2rem;
+    line-height: 62px; */
+    font-size: 3.3rem;
     margin-right: 5px;
+  }
+
+  .radio-span .radio-text i.la-suitcase {
+    margin-top: 5%;
   }
 
   .radio-span .radio-text.work i {
@@ -208,7 +222,7 @@ h4 {
     color: var(--dark);
     user-select: none;
     font-family: "Raleway", sans-serif;
-    font-size: 22px;
+    font-size: 1.7rem;
     font-weight: 400;
     text-transform: uppercase;
   }
@@ -283,8 +297,8 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 50%;
     border: 2px solid var(--business);
     margin-right: 5px;
@@ -299,7 +313,8 @@ h4 {
 #todos-list {
     position: relative;
     margin: 0.5rem 0;
-    height: 350px;
+    height: 24rem;
+    /* height: auto */
     overflow-y: auto;
     padding-right: 8px;
     background: var(--color4);
@@ -370,8 +385,8 @@ h4 {
 }
 
 .actions button {
-    height: 38px;
-    width: 38px;
+    height: 3rem;
+    width: 3rem;
     display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -420,4 +435,71 @@ h4 {
 
 .create-todo input[type="submit"]:hover {
     background: var(--color5);
+}
+
+/*MEDIA QUERIES */
+@media screen and (max-width: 992px) {
+    /*phones and tablets*/
+}
+
+
+@media screen and (max-width: 767px) {
+    /*phones*/
+}
+
+@media screen and (max-width: 576px) {
+    /*small phones*/
+    html {
+        font-size: 8S px;
+    }
+    .app {
+        max-width: 440px;
+        min-width: 300px;
+        height: 100vh;
+    }
+
+    .row {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .radio-span .radio-text h3 {
+        font-size: 1.05rem;
+    }
+    .radio-span .radio-text i {
+        font-size: 2.2rem;
+    }
+
+    #todos-list {
+        height: 33.5rem;
+    }
+
+    .create-todo input[type="text"] {
+        display: block;
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+        color: var(--dark);
+        background-color: #FFF;
+        border-radius: 0.5rem;
+    }
+    
+    .create-todo input[type="submit"] {
+        display: block;
+        border: none;
+        outline: none;   
+        color: #fff;
+        background: var(--color1);
+        font-size: 1.1rem;
+        padding: 0.8rem 1.7rem;
+        cursor: pointer;
+        border-radius: 40px;
+    }
+
+    /* .create-todo input[type="submit"] {
+        flex: 1;
+    } */
+
 }
