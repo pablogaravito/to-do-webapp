@@ -377,7 +377,7 @@ h4 {
     transform: scale(0.95);
 }
 
-.actions button {
+.actions .main-button {
     height: 3rem;
     width: 3rem;
     display: block;
@@ -451,11 +451,52 @@ h4 {
         height: 100vh;
     }
 
+    .todo-container {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .custom-check {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    .todo-item {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        grid-column: span 1 / -1;
+        grid-row: span 1;
+    }
+
+    .actions .main-button {
+        width: 5rem;
+    }
+
     .row {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
       margin-bottom: 1rem;
-      
+    }
+    .create-todo input[type="text"] {
+        grid-column: span 1;
+        grid-row: span 1;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .create-todo input[type="submit"] {
+        grid-column: span 1;
+        grid-row: span 1;
+        font-size: 1.1rem;
+        padding: 0.8rem 1.7rem;
     }
 
     .radio-span .radio-text h3 {
@@ -469,22 +510,6 @@ h4 {
         height: 33.5rem;
     }
 
-    .create-todo input[type="text"] {
-        grid-column: span 1;
-        grid-row: span 1;
-        border: none;
-        outline: none;
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
 
-    }
-    
-    .create-todo input[type="submit"] {
-        grid-column: span 1;
-        grid-row: span 1;
-        font-size: 1.1rem;
-        padding: 0.8rem 1.7rem;
-
-    }
 
 }
