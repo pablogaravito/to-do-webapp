@@ -2,11 +2,8 @@ window.addEventListener('load', () => {
     todos = readTodos();
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
-    
     const username = readUsername();
-
     nameInput.value = username;
-
     nameInput.addEventListener('change', e => {
         saveUsername(nameInput.value);
     });
@@ -148,7 +145,7 @@ function saveTodos() {
 }
 
 function sortTodos() {
-    // todos.sort((a,b) => b.createdAt - a.createdAt);
+    todos.sort((a,b) => b.createdAt - a.createdAt);
     todos.sort((a, b) => a.done - b.done);
 }
 
