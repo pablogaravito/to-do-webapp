@@ -43,9 +43,9 @@ body {
 
 .app {
     position: relative;
-    width: 80%;
-    max-width: 639px;
-    min-width: 480px;
+    width: 84%;
+    max-width: 641px;
+    min-width: 485px;
     height: 602px;
     background: var(--color6);
     color: var(--dark);
