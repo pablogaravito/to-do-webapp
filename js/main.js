@@ -1,3 +1,7 @@
+import { readUsername, saveUsername } from './userManager.js';
+
+let todos = [];
+
 window.addEventListener('load', () => {
     todos = readTodos();
     const nameInput = document.querySelector('#name');
@@ -128,16 +132,8 @@ function displayTodos() {
     });
 }
 
-function readUsername() {
-    return localStorage.getItem('username') || '';
-}
-
 function readTodos() {
     return JSON.parse(localStorage.getItem('todos')) || [];
-}
-
-function saveUsername(value) {
-    localStorage.setItem('username', value);
 }
 
 function saveTodos() {
