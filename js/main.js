@@ -8,46 +8,56 @@ let todos = [];
 function displayTodos() {
   const todosList = document.querySelector('#todos-list');
   todosList.innerHTML = '';
-
+  
+  const fragment = document.createDocumentFragment();
   todos.forEach(todo => {
     const todoElement = createTodoElement(
       todo,
       () => {
         todo.toggleDone();
-        sortTodos(todos);
-        saveTodos(todos);
-        displayTodos();
+        updateTodos();
       },
       () => {
         const input = todoElement.querySelector('input');
-        input.removeAttribute('readonly');
-        input.classList.remove('noselect');
-        input.focus();
-
-        const saveChanges = () => {
-          input.classList.add('noselect');
+        enableEditing(input, () => {
           todo.content = input.value;
-          sortTodos(todos);
-          saveTodos(todos);
-          displayTodos();
-        };
-
-        input.addEventListener('blur', saveChanges);
-        input.addEventListener('keyup', e => {
-          if (e.key === "Enter") saveChanges();
+          updateTodos();
         });
       },
       () => {
         todos = todos.filter(t => t !== todo);
-        saveTodos(todos);
-        displayTodos();
+        updateTodos();
       }
     );
-    todosList.appendChild(todoElement);
+    fragment.appendChild(todoElement);
   });
+  todosList.appendChild(fragment);
 }
 
-window.addEventListener('load', () => {
+function enableEditing(input, saveCallback) {
+  input.removeAttribute('readonly');
+  input.classList.remove('noselect');
+  input.focus();
+
+  const saveChanges = () => {
+    input.setAttribute('readonly', true);
+    input.classList.add('noselect');
+    saveCallback();
+  };
+
+  input.addEventListener('blur', saveChanges, { once: true });
+  input.addEventListener('keyup', e => {
+    if (e.key === "Enter") saveChanges();
+  }, { once: true });
+}
+
+function updateTodos() {
+  sortTodos(todos);
+  saveTodos(todos);
+  displayTodos();
+}
+
+function initApp() {
   todos = readTodos();
   const nameInput = document.querySelector('#name');
   const newTodoForm = document.querySelector('#new-todo-form');
@@ -66,20 +76,17 @@ window.addEventListener('load', () => {
       return;
     }
 
-    const todo = new Todo(content.value, category.value);
-    todos.push(todo);
-    sortTodos(todos);
-    saveTodos(todos);
+    todos.push(new Todo(content.value, category.value));
+    updateTodos();
     
     e.target.reset();
-    
     const categoryElement = document.querySelector(`#category${category.value.charAt(0).toUpperCase() + category.value.slice(1)}`);
     if (categoryElement) {
-        categoryElement.checked = true;
+      categoryElement.checked = true;
     }
-    
-    displayTodos();
   });
 
   displayTodos();
-});
+}
+
+window.addEventListener('load', initApp);
